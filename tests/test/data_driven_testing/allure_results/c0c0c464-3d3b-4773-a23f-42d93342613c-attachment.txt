@@ -1,0 +1,13 @@
+[{'username': 'admin', 'password': 'password123'}, {'username': 'dpaulack0', 'password': 'oE5#YMMyY3'}, {'username': 'mmcinnerny1', 'password': 'nV0)V,L.6T/'}, {'username': 'eeves2', 'password': 'xS9/"~4d43Ofn'}, {'username': 'bmcaster3', 'password': 'pS1}<r$n\'.&Px$"D'}, {'username': 'dmacclay4', 'password': 'sA0/,2Ix@BMlso&/'}]
+admin password123
+200
+dpaulack0 oE5#YMMyY3
+200
+mmcinnerny1 nV0)V,L.6T/
+200
+eeves2 xS9/"~4d43Ofn
+200
+bmcaster3 pS1}<r$n'.&Px$"D
+200
+dmacclay4 sA0/,2Ix@BMlso&/
+200

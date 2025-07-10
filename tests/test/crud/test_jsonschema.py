@@ -1,0 +1,41 @@
+import json
+
+from jsonschema import validate
+from jsonschema.exceptions import ValidationError
+import pytest
+import allure
+from src.constants.api_constants import APIConstants
+from src.helpers.payload_manager import payload_create_booking
+from src.helpers.api_request_wrapper import post_requests
+from src.helpers.common_verification import verify_http_status_code,verify_json_key_not_null
+from src.utils.utils import Utils
+import os
+
+class TestCreateBooking_Json_Schema(object):
+
+    def load_schema(self,file_name):
+        with open(file_name,'r') as file:
+            return json.load(file)
+
+    @pytest.mark.positive
+    @allure.title("Verify that Create Booking Status and Booking ID should not be Null")
+    @allure.description("Create a Booking from the payload and verify that Booking ID should not be Null and status code should be 200 for the correct payload")
+    def test_create_booking_json_schema(self):
+        response=post_requests(url=APIConstants.url_create_booking(),payload=payload_create_booking(),headers=Utils().common_headers(),auth=None,in_json=False)
+        booking_id=response.json()["bookingid"]
+        verify_http_status_code(response_data=response,expected_data=200)
+        verify_json_key_not_null(booking_id)
+
+        #the response that we received should be verified with schema.json
+        print(os.getcwd())
+        # file_path="C:\\Users\\Dhivya\\pyatb2xproject\\tests\\test\\crud\\create_booking_schema.json"
+        #or
+        file_path=os.getcwd()+"\create_booking_schema.json"
+        schema=self.load_schema(file_name=file_path)
+
+        try:
+            validate(instance=response.json(),schema=schema)
+        except ValidationError as e:
+            print(e.message)
+            # pytest.xfail("Incorrect JSON Schema")
+            pytest.fail("Failed:JSON Schema Error")
