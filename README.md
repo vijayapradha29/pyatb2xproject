@@ -27,3 +27,6 @@
 ``pip install openpyxl``
 ### To work with Json Schema:
 ``pip install jsonschema``
+
+### How to Run via Jenkins(CI/CD):
+<img width="1237" height="261" alt="image" src="https://github.com/user-attachments/assets/23d3143d-cbca-464c-a6a5-28449c68f3e8" />
